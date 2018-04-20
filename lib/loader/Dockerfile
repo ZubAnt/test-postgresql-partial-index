@@ -1,0 +1,13 @@
+FROM postgres:latest
+
+COPY ./database_loader /loader
+WORKDIR /loader
+
+ARG DBHOST
+ARG DBPORT
+ARG DBNAME
+ARG DBUSER
+ARG DBPASS
+ARG DATABASE
+
+CMD bash create_db.sh $DBHOST $DBPORT $DBNAME $DBUSER $DBPASS $DATABASE

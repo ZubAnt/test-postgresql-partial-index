@@ -1,0 +1,28 @@
+version: "3"
+services:
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    networks:
+      - backend
+    ports:
+      - "5454:5432"
+
+  loader:
+    build:
+      context: ../lib/loader/
+
+    volumes:
+      - ../src/database:/tmp/database
+
+    env_file: .env
+
+    networks:
+      - backend
+
+    depends_on:
+      - postgres
+
+networks:
+  backend:

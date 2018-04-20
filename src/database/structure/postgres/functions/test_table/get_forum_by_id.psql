@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION get_by_field_id(p_field_id INT)
+  RETURNS TABLE(id INT,
+                field_id UUID,
+                title TEXT)
+AS
+$BODY$
+  BEGIN
+    RETURN QUERY
+    SELECT tb.id, tb.field_id, tb.title
+    FROM test_table tb
+    WHERE tb.forum_id = p_field_id;
+  END;
+$BODY$
+LANGUAGE plpgsql VOLATILE;

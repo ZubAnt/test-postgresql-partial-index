@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! -z "${1}" ] && [ "${1}" == "--build" ]; then
+    docker-compose stop -t 1 api
+    docker-compose pull api
+    docker-compose build api
+fi
+
+docker-compose restart -t 1 api
+docker-compose logs --tail="20" -f -t api
+
+echo "Stopping"
+docker-compose stop -t 1 api

@@ -1,0 +1,3 @@
+CREATE INDEX test_table_field_null_idx
+  ON test_table (field_id)
+  WHERE field_id IS NULL;

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+docker-compose stop -t 1
+docker-compose pull
+docker-compose build
+docker-compose up -d
+docker-compose logs --tail="20" -f -t
+
+if [ -z "${1}" ] || [ "${1}" != "-d" ]; then
+    echo "Stopping"
+    docker-compose stop -t 1
+fi

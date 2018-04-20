@@ -1,0 +1,7 @@
+@startuml
+
+test_table: id [INT]
+test_table: field_id [UUID]
+test_table: title [TEXT] 
+
+@enduml
